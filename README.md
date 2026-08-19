@@ -24,7 +24,7 @@ audit exposure).
 
 Neither dataset is redistributed in this repo. Download separately:
 
-- **Claims:** [CMS DE-SynPUF](https://www.cms.gov/data-research/statistics-trends-and-reports/medicare-claims-synthetic-public-use-files) — Outpatient Claims, Sample 1 (790,790 rows, Dec 2007–Dec 2010, $224.5M in payments)
+- **Claims:** [CMS DE-SynPUF](https://www.cms.gov/data-research/statistics-trends-and-reports/medicare-claims-synthetic-public-use-files) — Outpatient Claims, Sample 1 (790,790 rows, Dec 2007–Dec 2010, USD 224.5M in payments)
 - **Rules:** [CMS NCCI Hospital PTP Edits](https://www.cms.gov/medicare/coding-billing/ncci-medicare) — 2026 Q3 (v322r0), 1,864,729 code pairs across four files
 
 > NCCI files contain AMA-licensed CPT codes and require accepting a license 
@@ -43,7 +43,7 @@ Neither dataset is redistributed in this repo. Download separately:
 ## Findings
 
 **#1 — Initial hypothesis not supported.** Hypothesized that venipuncture (36415) 
-billed with lab panels was an NCCI violation. Screened 74,997 claims / $17.6M — then 
+billed with lab panels was an NCCI violation. Screened 74,997 claims / USD 17.6M — then 
 verified against the full edit file and found the pair does not exist in either 
 direction. Both codes appear in the tables, so the negative result is real, not a 
 matching error. The relationship is governed by Clinical Lab Fee Schedule payment 
@@ -51,10 +51,10 @@ policy, not PTP edits. Hypothesis withdrawn.
 
 **#2 — Duplicate metabolic panels (confirmed).** 80053 (comprehensive) billed with 
 80048 (basic), modifier indicator 0. The basic panel is a subset of the comprehensive. 
-15,729 claims / $5.1M.
+15,729 claims / USD 5.1M.
 
 **#3 — Full hard-edit scan.** 38,350 violating pairs across 31,693 claims (4.1%). 
-$12,674,090 in claims touched; **~$1,222,331 estimated line-level exposure** after 
+USD 12,674,090 in claims touched; **~USD 1,222,331 estimated line-level exposure** after 
 correcting for the fact that a violating claim contains a median of 11 service lines, 
 typically one of which is affected. Violations concentrate heavily by code — 80048/80053 
 alone accounts for 41% — and cluster by department: laboratory, physical therapy, radiology.
@@ -65,7 +65,7 @@ be inefficient; the pattern points to shared billing software defaults and order
 design rather than facility-specific behavior.
 
 **External validation.** CMS's CERT program reported a 6.55% Medicare FFS improper 
-payment rate for FY2025 ($28.83B). This analysis observed 4.1%, detecting only hard PTP 
+payment rate for FY2025 (USD 28.83B). This analysis observed 4.1%, detecting only hard PTP 
 code-pair conflicts — a narrow subset of CERT's scope, which also includes coverage, 
 medical necessity, and documentation failures. A result below CERT is the expected 
 relationship; a result above it would have indicated methodological error.
@@ -75,7 +75,7 @@ relationship; a result above it would have indicated methodological error.
 - **Synthetic data.** DE-SynPUF is statistically generated. Violation rates hold for this 
   dataset; they should not be assumed to match real Medicare claims. Provider distribution 
   in particular may reflect synthesis artifacts.
-- **Binned payments.** Values appear capped at $3,300, so all dollar figures are approximate.
+- **Binned payments.** Values appear capped at USD 3,300, so all dollar figures are approximate.
 - **Line-level exposure is estimated, not measured.** DE-SynPUF reports payment only at 
   claim level. Exposure is estimated by even allocation across lines — an approximation, 
   since lab codes typically run below the claim average.
