@@ -92,7 +92,7 @@ relationship; a result above it would have indicated methodological error.
 pip install pandas openpyxl
 ```
 
-Place downloaded files in `data/`, then run `notebooks/denial_analysis.ipynb` top to bottom.
+Place downloaded files in `data/`, then run `notebooks/Claim-analysis.ipynb` top to bottom.
 
 ## Next steps
 
